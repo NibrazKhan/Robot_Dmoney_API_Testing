@@ -6,7 +6,7 @@ Library    os
 
 *** Variables ***
 ${base_url}     http://dmoney.roadtocareer.net
-${json_file_path}   C:/Users/NibrazKhan/Desktop/Python API Automation/DmoneyAPIAutomation/Variables.json
+${json_file_path}  ./Variables.json
 
 *** Test Cases ***
 TC1: Successful Login With Valid Credentials

@@ -9,12 +9,12 @@ Library    OperatingSystem
 
 
 *** Variables ***
-${base_url}     http://dmoney.professionaltrainingbd.com
-${json_file_path}   C:/Users/NibrazKhan/Desktop/Python API Automation/DmoneyAPIAutomation/Variables.json
+${base_url}     http://dmoney.roadtocareer.net
+${json_file_path}   ./Variables.json
 ${secret_key}   ROADTOSDET
 
 *** Test Cases ***
-TC1: Successful Login With Valid Credentials
+TC1: Creation of User_1
      create session    mysession     ${base_url}
      ${random_number}=    Generate Random String  8  [NUMBERS]
      ${randomName}=     generate random string    8-15
@@ -35,10 +35,28 @@ TC1: Successful Login With Valid Credentials
 #     Extracting value from json response
      ${message}=    get value from json     ${response.json()}      message
      log to console    ${message[0]}
-     ${customer2_id}=    get value from json     ${response.json()}      user.id
-     set to dictionary    ${json_obj}   customer_2_id=${customer2_id[0]}
-     ${customer2_phone_number}=    get value from json     ${response.json()}      user.phone_number
-     set to dictionary    ${json_obj}   customer2_phone_number=${customer2_phone_number[0]}
+     log to console    response: ${response.json()}
+     ${customer1_id}=    get value from json     ${response.json()}      user.id
+     set to dictionary    ${json_obj}   customer_1_id=${customer1_id[0]}
+     ${customer1_phone_number}=    get value from json     ${response.json()}      user.phone_number
+     set to dictionary    ${json_obj}   customer1_phone_number=${customer1_phone_number[0]}
      dump json to file    ${json_file_path}    ${json_obj}
      should be equal as strings    ${message[0]}   User created successfully
      should be equal as strings    ${response.status_code}  201
+#*** Keywords ***
+#Initialize Test Data
+#    ${random_number}=    Generate Random String  8  [NUMBERS]
+#    log to console    random number: ${random_number}
+#    ${randomName}=  convert to string    TestName${random_number}
+#    ${randomEmail}=     convert to string    TestEmail${random_number}@gmail.com
+#    ${password}=    convert to string    TestPassword${random_number}
+#    ${phoneNumber}=     convert to string    01345${random_number}
+#    ${nid}=     convert to string    6452${random_number}
+#    ${role}=    convert to string    Customer
+#
+#    set suite variable    ${random_number}
+#    set suite variable    ${randomName}
+#    set suite variable    ${randomEmail}
+#    set suite variable    ${password}
+#    set suite variable    ${nid}
+#    set suite variable    ${role}
