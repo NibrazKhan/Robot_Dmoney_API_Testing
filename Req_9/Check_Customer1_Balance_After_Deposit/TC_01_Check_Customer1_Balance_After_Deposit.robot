@@ -4,12 +4,12 @@ Library    Collections
 Library    JSONLibrary
 
 *** Variables ***
-${base_url}     http://dmoney.professionaltrainingbd.com
-${json_file_path}   C:/Users/NibrazKhan/Desktop/Python API Automation/DmoneyAPIAutomation/Variables.json
+${base_url}     http://dmoney.roadtocareer.net
+${json_file_path}   ./Variables.json
 ${secret_key}   ROADTOSDET
 
 *** Test Cases ***
-TC1: Successful Login With Valid Credentials
+TC1: Checking Customer_1 Balance After Deposit
      create session    mysession     ${base_url}
      ${json_obj}=   load json from file     ${json_file_path}
      ${token}=  get value from json    ${json_obj}  $.token

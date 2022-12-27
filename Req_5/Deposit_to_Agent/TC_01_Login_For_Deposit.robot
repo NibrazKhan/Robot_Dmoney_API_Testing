@@ -5,9 +5,8 @@ Library    JSONLibrary
 Library    os
 
 *** Variables ***
-${base_url}     http://dmoney.professionaltrainingbd.com
-${json_file_path}   C:/Users/NibrazKhan/Desktop/Python API Automation/DmoneyAPIAutomation/Variables.json
-
+${base_url}     http://dmoney.roadtocareer.net
+${json_file_path}   ./Variables.json
 *** Test Cases ***
 TC1: Successful Login With Valid Credentials
      create session    mysession     ${base_url}
