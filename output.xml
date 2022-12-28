@@ -1,260 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.1 (Python 3.11.0 on win32)" generated="20221229 04:04:55.230" rpa="false" schemaversion="3">
-<suite id="s1" name="Req 1" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Req_1">
-<suite id="s1-s1" name="Login" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Req_1\Login">
-<suite id="s1-s1-s1" name="TC 01 Unsuccessful Login Wrong Email And Password" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Req_1\Login\TC_01_Unsuccessful_Login_Wrong_Email_And_Password.robot">
-<test id="s1-s1-s1-t1" name="TC1: Successful Login With Valid Credentials" line="12">
+<robot generator="Robot 6.0.1 (Python 3.11.0 on win32)" generated="20221229 05:25:38.270" rpa="false" schemaversion="3">
+<suite id="s1" name="TC 01 Unsuccessful Login Wrong Email And Password" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Req_1\Login\TC_01_Unsuccessful_Login_Wrong_Email_And_Password.robot">
+<test id="s1-t1" name="TC1: UnSuccessful Login With InValid Credentials" line="12">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>mysession</arg>
 <arg>${base_url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221229 04:04:55.463" level="INFO">Creating Session using : alias=mysession, url=http://dmoney.roadtocareer.net, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221229 04:04:55.463" endtime="20221229 04:04:55.463"/>
+<msg timestamp="20221229 05:25:38.405" level="INFO">Creating Session using : alias=mysession, url=http://dmoney.roadtocareer.net, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221229 05:25:38.405" endtime="20221229 05:25:38.405"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${body}</var>
 <arg>email=wrong@roadtocareer.net</arg>
 <arg>password=wrong password</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221229 04:04:55.464" level="INFO">${body} = {'email': 'wrong@roadtocareer.net', 'password': 'wrong password'}</msg>
-<status status="PASS" starttime="20221229 04:04:55.463" endtime="20221229 04:04:55.464"/>
+<msg timestamp="20221229 05:25:38.406" level="INFO">${body} = {'email': 'wrong@roadtocareer.net', 'password': 'wrong password'}</msg>
+<status status="PASS" starttime="20221229 05:25:38.405" endtime="20221229 05:25:38.406"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${header}</var>
 <arg>Content-Type=application/json; charset=utf-8</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221229 04:04:55.464" level="INFO">${header} = {'Content-Type': 'application/json; charset=utf-8'}</msg>
-<status status="PASS" starttime="20221229 04:04:55.464" endtime="20221229 04:04:55.464"/>
+<msg timestamp="20221229 05:25:38.406" level="INFO">${header} = {'Content-Type': 'application/json; charset=utf-8'}</msg>
+<status status="PASS" starttime="20221229 05:25:38.406" endtime="20221229 05:25:38.406"/>
 </kw>
-<kw name="POST On Session" library="RequestsLibrary">
+<kw name="Run Keyword And Expect Error" library="BuiltIn">
 <var>${response}</var>
+<arg>*</arg>
+<arg>POST On Session</arg>
+<arg>mysession</arg>
+<arg>/user/login</arg>
+<arg>json=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
 <arg>mysession</arg>
 <arg>/user/login</arg>
 <arg>json=${body}</arg>
 <arg>headers=${header}</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20221229 04:04:55.503" level="INFO">POST Request : url=http://dmoney.roadtocareer.net/user/login 
+<msg timestamp="20221229 05:25:38.435" level="INFO">POST Request : url=http://dmoney.roadtocareer.net/user/login 
  path_url=/user/login 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '65'} 
  body=b'{"email": "wrong@roadtocareer.net", "password": "wrong password"}' 
  </msg>
-<msg timestamp="20221229 04:04:55.503" level="INFO">POST Response : url=http://dmoney.roadtocareer.net/user/login 
+<msg timestamp="20221229 05:25:38.435" level="INFO">POST Response : url=http://dmoney.roadtocareer.net/user/login 
  status=404, reason=Not Found 
- headers={'Date': 'Wed, 28 Dec 2022 22:04:55 GMT', 'Server': 'Apache', 'X-Powered-By': 'Express, Phusion Passenger(R) 6.0.15', 'ETag': 'W/"1c-ZEVVcvtFhxKX/QUvVKqKxwGbbNA"', 'Content-Length': '28', 'Status': '404 Not Found', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json; charset=utf-8'} 
+ headers={'Date': 'Wed, 28 Dec 2022 23:25:38 GMT', 'Server': 'Apache', 'X-Powered-By': 'Express, Phusion Passenger(R) 6.0.15', 'ETag': 'W/"1c-ZEVVcvtFhxKX/QUvVKqKxwGbbNA"', 'Content-Length': '28', 'Status': '404 Not Found', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json; charset=utf-8'} 
  body={"message":"User not found"} 
  </msg>
-<msg timestamp="20221229 04:04:55.504" level="FAIL">HTTPError: 404 Client Error: Not Found for url: http://dmoney.roadtocareer.net/user/login</msg>
-<status status="FAIL" starttime="20221229 04:04:55.464" endtime="20221229 04:04:55.523"/>
+<msg timestamp="20221229 05:25:38.435" level="FAIL">HTTPError: 404 Client Error: Not Found for url: http://dmoney.roadtocareer.net/user/login</msg>
+<status status="FAIL" starttime="20221229 05:25:38.406" endtime="20221229 05:25:38.437"/>
 </kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${message}</var>
-<arg>${response.json()}</arg>
-<arg>message</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.524" endtime="20221229 04:04:55.524"/>
+<msg timestamp="20221229 05:25:38.437" level="INFO">${response} = HTTPError: 404 Client Error: Not Found for url: http://dmoney.roadtocareer.net/user/login</msg>
+<status status="PASS" starttime="20221229 05:25:38.406" endtime="20221229 05:25:38.437"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${message[0]}</arg>
+<arg>Response: ${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.524" endtime="20221229 04:04:55.524"/>
+<status status="PASS" starttime="20221229 05:25:38.437" endtime="20221229 05:25:38.437"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
-<var>${json_response}</var>
-<arg>json.loads("""${response.content}""")</arg>
-<arg>json</arg>
+<var>${type}</var>
+<arg>type($response)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.524" endtime="20221229 04:04:55.524"/>
-</kw>
-<kw name="Get From Dictionary" library="Collections">
-<var>${token_response}</var>
-<arg>${json_response}</arg>
-<arg>token</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.524" endtime="20221229 04:04:55.524"/>
-</kw>
-<kw name="Set Suite Variable" library="BuiltIn">
-<arg>${token}</arg>
-<arg>${token_response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.525" endtime="20221229 04:04:55.525"/>
+<msg timestamp="20221229 05:25:38.438" level="INFO">${type} = &lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20221229 05:25:38.438" endtime="20221229 05:25:38.438"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>\nToken:\n${token}</arg>
+<arg>${type}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.525" endtime="20221229 04:04:55.525"/>
+<status status="PASS" starttime="20221229 05:25:38.438" endtime="20221229 05:25:38.438"/>
 </kw>
-<kw name="Load Json From File" library="JSONLibrary">
-<var>${json_obj}</var>
-<arg>${json_file_path}</arg>
-<doc>Load JSON from file.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.525" endtime="20221229 04:04:55.525"/>
-</kw>
-<kw name="Set To Dictionary" library="Collections">
-<arg>${json_obj}</arg>
-<arg>token=${token}</arg>
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.526" endtime="20221229 04:04:55.526"/>
-</kw>
-<kw name="Dump Json To File" library="JSONLibrary">
-<arg>${json_file_path}</arg>
-<arg>${json_obj}</arg>
-<doc>Dump JSON to file</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.526" endtime="20221229 04:04:55.526"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${message[0]}</arg>
-<arg>User not found</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.526" endtime="20221229 04:04:55.526"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${response.status_code}</arg>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response}</arg>
 <arg>404</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" starttime="20221229 04:04:55.526" endtime="20221229 04:04:55.526"/>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20221229 05:25:38.438" endtime="20221229 05:25:38.439"/>
 </kw>
-<status status="FAIL" starttime="20221229 04:04:55.462" endtime="20221229 04:04:55.526">HTTPError: 404 Client Error: Not Found for url: http://dmoney.roadtocareer.net/user/login</status>
+<status status="PASS" starttime="20221229 05:25:38.405" endtime="20221229 05:25:38.439"/>
 </test>
-<status status="FAIL" starttime="20221229 04:04:55.251" endtime="20221229 04:04:55.527"/>
-</suite>
-<suite id="s1-s1-s2" name="TC 02 Successful Login" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Req_1\Login\TC_02_Successful_Login.robot">
-<test id="s1-s1-s2-t1" name="TC1: Successful Login With Valid Credentials" line="12">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221229 04:04:55.532" level="INFO">Creating Session using : alias=mysession, url=http://dmoney.roadtocareer.net, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221229 04:04:55.531" endtime="20221229 04:04:55.532"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${body}</var>
-<arg>email=salman@roadtocareer.net</arg>
-<arg>password=1234</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221229 04:04:55.532" level="INFO">${body} = {'email': 'salman@roadtocareer.net', 'password': '1234'}</msg>
-<status status="PASS" starttime="20221229 04:04:55.532" endtime="20221229 04:04:55.532"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json; charset=utf-8</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221229 04:04:55.532" level="INFO">${header} = {'Content-Type': 'application/json; charset=utf-8'}</msg>
-<status status="PASS" starttime="20221229 04:04:55.532" endtime="20221229 04:04:55.532"/>
-</kw>
-<kw name="POST On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/user/login</arg>
-<arg>json=${body}</arg>
-<arg>headers=${header}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20221229 04:04:55.557" level="INFO">POST Request : url=http://dmoney.roadtocareer.net/user/login 
- path_url=/user/login 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '56'} 
- body=b'{"email": "salman@roadtocareer.net", "password": "1234"}' 
- </msg>
-<msg timestamp="20221229 04:04:55.557" level="INFO">POST Response : url=http://dmoney.roadtocareer.net/user/login 
- status=200, reason=OK 
- headers={'Date': 'Wed, 28 Dec 2022 22:04:55 GMT', 'Server': 'Apache', 'X-Powered-By': 'Express, Phusion Passenger(R) 6.0.15', 'ETag': 'W/"f0-TonzUQKnSV9LFYyKs7lkdszhjKQ"', 'Content-Length': '240', 'Status': '200 OK', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json; charset=utf-8'} 
- body={"message":"Login successfully","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMjY1MDk1LCJleHAiOjE2NzIyNjY4OTV9.HkC7zXja1pLnHoaPuW9vLiaTiqmqOxxBhLgAnWoN41Q"} 
- </msg>
-<msg timestamp="20221229 04:04:55.557" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221229 04:04:55.533" endtime="20221229 04:04:55.557"/>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${message}</var>
-<arg>${response.json()}</arg>
-<arg>message</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221229 04:04:55.585" level="INFO">${message} = ['Login successfully']</msg>
-<status status="PASS" starttime="20221229 04:04:55.557" endtime="20221229 04:04:55.585"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${message[0]}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221229 04:04:55.586" endtime="20221229 04:04:55.586"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${json_response}</var>
-<arg>json.loads("""${response.content}""")</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20221229 04:04:55.587" level="INFO">${json_response} = {'message': 'Login successfully', 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMjY1MDk1LCJleHAiOjE2NzIyNjY4OTV9.Hk...</msg>
-<status status="PASS" starttime="20221229 04:04:55.587" endtime="20221229 04:04:55.587"/>
-</kw>
-<kw name="Get From Dictionary" library="Collections">
-<var>${token_response}</var>
-<arg>${json_response}</arg>
-<arg>token</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20221229 04:04:55.587" level="INFO">${token_response} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMjY1MDk1LCJleHAiOjE2NzIyNjY4OTV9.HkC7zXja1pLnHoaPuW9vLiaTiqmqOxxBhLgAnWoN41Q</msg>
-<status status="PASS" starttime="20221229 04:04:55.587" endtime="20221229 04:04:55.587"/>
-</kw>
-<kw name="Set Suite Variable" library="BuiltIn">
-<arg>${token}</arg>
-<arg>${token_response}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20221229 04:04:55.588" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMjY1MDk1LCJleHAiOjE2NzIyNjY4OTV9.HkC7zXja1pLnHoaPuW9vLiaTiqmqOxxBhLgAnWoN41Q</msg>
-<status status="PASS" starttime="20221229 04:04:55.587" endtime="20221229 04:04:55.588"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>\nToken:\n${token}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221229 04:04:55.588" endtime="20221229 04:04:55.589"/>
-</kw>
-<kw name="Load Json From File" library="JSONLibrary">
-<var>${json_obj}</var>
-<arg>${json_file_path}</arg>
-<doc>Load JSON from file.</doc>
-<msg timestamp="20221229 04:04:55.594" level="INFO">${json_obj} = {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMTcxNTMyLCJleHAiOjE2NzIxNzMzMzJ9.mjALS0z8ksAgyfFw7Sbf4rLY2kt8FaJbTKI...</msg>
-<status status="PASS" starttime="20221229 04:04:55.589" endtime="20221229 04:04:55.594"/>
-</kw>
-<kw name="Set To Dictionary" library="Collections">
-<arg>${json_obj}</arg>
-<arg>token=${token}</arg>
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
-<status status="PASS" starttime="20221229 04:04:55.594" endtime="20221229 04:04:55.594"/>
-</kw>
-<kw name="Dump Json To File" library="JSONLibrary">
-<arg>${json_file_path}</arg>
-<arg>${json_obj}</arg>
-<doc>Dump JSON to file</doc>
-<status status="PASS" starttime="20221229 04:04:55.594" endtime="20221229 04:04:55.595"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${message[0]}</arg>
-<arg>Login successfully</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20221229 04:04:55.595" endtime="20221229 04:04:55.596"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<msg timestamp="20221229 04:04:55.596" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<status status="PASS" starttime="20221229 04:04:55.596" endtime="20221229 04:04:55.596"/>
-</kw>
-<status status="PASS" starttime="20221229 04:04:55.531" endtime="20221229 04:04:55.596"/>
-</test>
-<status status="PASS" starttime="20221229 04:04:55.528" endtime="20221229 04:04:55.597"/>
-</suite>
-<status status="FAIL" starttime="20221229 04:04:55.249" endtime="20221229 04:04:55.598"/>
-</suite>
-<status status="FAIL" starttime="20221229 04:04:55.231" endtime="20221229 04:04:55.598"/>
+<status status="PASS" starttime="20221229 05:25:38.271" endtime="20221229 05:25:38.439"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="1" skip="0" id="s1" name="Req 1">Req 1</stat>
-<stat pass="1" fail="1" skip="0" id="s1-s1" name="Login">Req 1.Login</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="TC 01 Unsuccessful Login Wrong Email And Password">Req 1.Login.TC 01 Unsuccessful Login Wrong Email And Password</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s2" name="TC 02 Successful Login">Req 1.Login.TC 02 Successful Login</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC 01 Unsuccessful Login Wrong Email And Password">TC 01 Unsuccessful Login Wrong Email And Password</stat>
 </suite>
 </statistics>
 <errors>
