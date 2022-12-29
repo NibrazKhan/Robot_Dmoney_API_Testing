@@ -1,171 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.1 (Python 3.11.0 on win32)" generated="20221230 01:53:20.162" rpa="false" schemaversion="3">
-<suite id="s1" name="TC 002 Cannot Create User For Wrong Token And Secret Key" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Requests\Req_2\User_Creations\TC_002_Cannot_Create_User_For_Wrong_Token_And_Secret_Key.robot">
-<test id="s1-t1" name="TC1: Creation of User_1" line="17">
+<robot generator="Robot 6.0.1 (Python 3.11.0 on win32)" generated="20221230 02:13:27.600" rpa="false" schemaversion="3">
+<suite id="s1" name="Req 14" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Requests\Req_14">
+<suite id="s1-s1" name="TC 01 Delete User" source="C:\Users\NibrazKhan\Desktop\Python Batch -1\Dmoney API Automation\Robot_Dmoney_API_Testing\Requests\Req_14\TC_01_Delete_User.robot">
+<test id="s1-s1-t1" name="TC1: Delete User" line="16">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>mysession</arg>
 <arg>${base_url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221230 01:53:20.302" level="INFO">Creating Session using : alias=mysession, url=http://dmoney.roadtocareer.net, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221230 01:53:20.301" endtime="20221230 01:53:20.302"/>
-</kw>
-<kw name="Generate Random String" library="String">
-<var>${random_number}</var>
-<arg>8</arg>
-<arg>[NUMBERS]</arg>
-<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
-<msg timestamp="20221230 01:53:20.302" level="INFO">${random_number} = 43336493</msg>
-<status status="PASS" starttime="20221230 01:53:20.302" endtime="20221230 01:53:20.302"/>
-</kw>
-<kw name="Generate Random String" library="String">
-<var>${randomName}</var>
-<arg>8-15</arg>
-<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
-<msg timestamp="20221230 01:53:20.302" level="INFO">${randomName} = b8ATLC7pu</msg>
-<status status="PASS" starttime="20221230 01:53:20.302" endtime="20221230 01:53:20.303"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${randomEmail}</var>
-<arg>TestEmail${randomName}@gmail.com</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221230 01:53:20.303" level="INFO">${randomEmail} = TestEmailb8ATLC7pu@gmail.com</msg>
-<status status="PASS" starttime="20221230 01:53:20.303" endtime="20221230 01:53:20.303"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${password}</var>
-<arg>TestP@ssword${randomName}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221230 01:53:20.303" level="INFO">${password} = TestP@sswordb8ATLC7pu</msg>
-<status status="PASS" starttime="20221230 01:53:20.303" endtime="20221230 01:53:20.303"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${phoneNumber}</var>
-<arg>017${random_number}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221230 01:53:20.303" level="INFO">${phoneNumber} = 01743336493</msg>
-<status status="PASS" starttime="20221230 01:53:20.303" endtime="20221230 01:53:20.304"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${nid}</var>
-<arg>612345${random_number}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221230 01:53:20.304" level="INFO">${nid} = 61234543336493</msg>
-<status status="PASS" starttime="20221230 01:53:20.304" endtime="20221230 01:53:20.304"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${role}</var>
-<arg>Customer</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221230 01:53:20.304" level="INFO">${role} = Customer</msg>
-<status status="PASS" starttime="20221230 01:53:20.304" endtime="20221230 01:53:20.304"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${user_info}</var>
-<arg>name=${randomName}</arg>
-<arg>email=${randomEmail}</arg>
-<arg>password=${password}</arg>
-<arg>phone_number=${phoneNumber}</arg>
-<arg>nid=${nid}</arg>
-<arg>role=${role}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221230 01:53:20.305" level="INFO">${user_info} = {'name': 'b8ATLC7pu', 'email': 'TestEmailb8ATLC7pu@gmail.com', 'password': 'TestP@sswordb8ATLC7pu', 'phone_number': '01743336493', 'nid': '61234543336493', 'role': 'Customer'}</msg>
-<status status="PASS" starttime="20221230 01:53:20.304" endtime="20221230 01:53:20.305"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${user_info_json}</var>
-<arg>json.dumps(${user_info},indent=4)</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20221230 01:53:20.305" level="INFO">${user_info_json} = {
-    "name": "b8ATLC7pu",
-    "email": "TestEmailb8ATLC7pu@gmail.com",
-    "password": "TestP@sswordb8ATLC7pu",
-    "phone_number": "01743336493",
-    "nid": "61234543336493",
-    "role": "Customer"
-...</msg>
-<status status="PASS" starttime="20221230 01:53:20.305" endtime="20221230 01:53:20.305"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${user_info_json}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221230 01:53:20.305" endtime="20221230 01:53:20.305"/>
+<msg timestamp="20221230 02:13:27.747" level="INFO">Creating Session using : alias=mysession, url=http://dmoney.roadtocareer.net, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221230 02:13:27.746" endtime="20221230 02:13:27.747"/>
 </kw>
 <kw name="Load Json From File" library="JSONLibrary">
 <var>${json_obj}</var>
 <arg>${json_file_path}</arg>
 <doc>Load JSON from file.</doc>
-<msg timestamp="20221230 01:53:20.306" level="INFO">${json_obj} = {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQzMTQ0LCJleHAiOjE2NzIzNDQ5NDR9.IycQ3LA3jv4u88_lwl2iJzrKkONuaYO7CJ6...</msg>
-<status status="PASS" starttime="20221230 01:53:20.306" endtime="20221230 01:53:20.306"/>
+<msg timestamp="20221230 02:13:27.747" level="INFO">${json_obj} = {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQ0NDM3LCJleHAiOjE2NzIzNDYyMzd9.Rh-0vmFHz94rXLRsQN5jDd7suETvC3okZoC...</msg>
+<status status="PASS" starttime="20221230 02:13:27.747" endtime="20221230 02:13:27.747"/>
 </kw>
 <kw name="Get Value From Json" library="JSONLibrary">
 <var>${token}</var>
 <arg>${json_obj}</arg>
 <arg>$.token</arg>
 <doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221230 01:53:20.319" level="INFO">${token} = ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQzMTQ0LCJleHAiOjE2NzIzNDQ5NDR9.IycQ3LA3jv4u88_lwl2iJzrKkONuaYO7CJ6hNuaUefE'...</msg>
-<status status="PASS" starttime="20221230 01:53:20.306" endtime="20221230 01:53:20.319"/>
+<msg timestamp="20221230 02:13:27.760" level="INFO">${token} = ['eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQ0NDM3LCJleHAiOjE2NzIzNDYyMzd9.Rh-0vmFHz94rXLRsQN5jDd7suETvC3okZoCzI528RNs'...</msg>
+<status status="PASS" starttime="20221230 02:13:27.748" endtime="20221230 02:13:27.760"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${header}</var>
 <arg>Content-Type=application/json; charset=utf-8</arg>
-<arg>Authorization=Wrong${token[0]}</arg>
-<arg>X-AUTH-SECRET-KEY=Wrong${secret_key}</arg>
+<arg>Authorization=${token[0]}</arg>
+<arg>X-AUTH-SECRET-KEY=${secret_key}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221230 01:53:20.320" level="INFO">${header} = {'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'WrongeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQz...</msg>
-<status status="PASS" starttime="20221230 01:53:20.319" endtime="20221230 01:53:20.320"/>
+<msg timestamp="20221230 02:13:27.761" level="INFO">${header} = {'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQ0NDM3L...</msg>
+<status status="PASS" starttime="20221230 02:13:27.760" endtime="20221230 02:13:27.761"/>
 </kw>
-<kw name="Run Keyword And Expect Error" library="BuiltIn">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${customer_1_id}</var>
+<arg>${json_obj}</arg>
+<arg>$.customer_1_id</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221230 02:13:27.771" level="INFO">${customer_1_id} = [92]</msg>
+<status status="PASS" starttime="20221230 02:13:27.761" endtime="20221230 02:13:27.771"/>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
 <var>${response}</var>
-<arg>*</arg>
-<arg>POST On Session</arg>
 <arg>mysession</arg>
-<arg>/user/create</arg>
-<arg>data=${user_info_json}</arg>
+<arg>/user/delete/${customer_1_id[0]}</arg>
 <arg>headers=${header}</arg>
-<doc>Runs the keyword and checks that the expected error occurred.</doc>
-<kw name="POST On Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>/user/create</arg>
-<arg>data=${user_info_json}</arg>
-<arg>headers=${header}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<msg timestamp="20221230 01:53:20.348" level="INFO">POST Request : url=http://dmoney.roadtocareer.net/user/create 
- path_url=/user/create 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'WrongeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQzMTQ0LCJleHAiOjE2NzIzNDQ5NDR9.IycQ3LA3jv4u88_lwl2iJzrKkONuaYO7CJ6hNuaUefE', 'X-AUTH-SECRET-KEY': 'WrongROADTOSDET', 'Content-Length': '201'} 
- body={
-    "name": "b8ATLC7pu",
-    "email": "TestEmailb8ATLC7pu@gmail.com",
-    "password": "TestP@sswordb8ATLC7pu",
-    "phone_number": "01743336493",
-    "nid": "61234543336493",
-    "role": "Customer"
-} 
+<doc>*DEPRECATED* Please use `DELETE On Session` instead.</doc>
+<msg timestamp="20221230 02:13:27.772" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg timestamp="20221230 02:13:27.804" level="INFO">DELETE Request : url=http://dmoney.roadtocareer.net/user/delete/92 
+ path_url=/user/delete/92 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json; charset=utf-8', 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNjcyMzQ0NDM3LCJleHAiOjE2NzIzNDYyMzd9.Rh-0vmFHz94rXLRsQN5jDd7suETvC3okZoCzI528RNs', 'X-AUTH-SECRET-KEY': 'ROADTOSDET', 'Content-Length': '0'} 
+ body=None 
  </msg>
-<msg timestamp="20221230 01:53:20.348" level="INFO">POST Response : url=http://dmoney.roadtocareer.net/user/create 
- status=401, reason=Unauthorized 
- headers={'Date': 'Thu, 29 Dec 2022 19:53:20 GMT', 'Server': 'Apache', 'X-Powered-By': 'Express, Phusion Passenger(R) 6.0.15', 'ETag': 'W/"3b-g/f7K/VrxvqE29Ta9rVhYMq2ol4"', 'Content-Length': '59', 'Status': '401 Unauthorized', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json; charset=utf-8'} 
- body={"error":{"message":"Secret auth key validation failure!"}} 
+<msg timestamp="20221230 02:13:27.804" level="INFO">DELETE Response : url=http://dmoney.roadtocareer.net/user/delete/92 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 29 Dec 2022 20:13:28 GMT', 'Server': 'Apache', 'X-Powered-By': 'Express, Phusion Passenger(R) 6.0.15', 'ETag': 'W/"27-27o4zzUjhHNmthTJyia4gBCjpos"', 'Content-Length': '39', 'Status': '200 OK', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json; charset=utf-8'} 
+ body={"message":"User deleted successfully"} 
  </msg>
-<msg timestamp="20221230 01:53:20.348" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: http://dmoney.roadtocareer.net/user/create</msg>
-<status status="FAIL" starttime="20221230 01:53:20.320" endtime="20221230 01:53:20.349"/>
+<msg timestamp="20221230 02:13:27.804" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221230 02:13:27.772" endtime="20221230 02:13:27.804"/>
 </kw>
-<msg timestamp="20221230 01:53:20.350" level="INFO">${response} = HTTPError: 401 Client Error: Unauthorized for url: http://dmoney.roadtocareer.net/user/create</msg>
-<status status="PASS" starttime="20221230 01:53:20.320" endtime="20221230 01:53:20.350"/>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${message}</var>
+<arg>${response.json()}</arg>
+<arg>message</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221230 02:13:27.816" level="INFO">${message} = ['User deleted successfully']</msg>
+<status status="PASS" starttime="20221230 02:13:27.805" endtime="20221230 02:13:27.816"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response}</arg>
+<arg>${message[0]}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221230 01:53:20.350" endtime="20221230 01:53:20.350"/>
+<status status="PASS" starttime="20221230 02:13:27.816" endtime="20221230 02:13:27.817"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${response}</arg>
-<arg>401</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20221230 01:53:20.350" endtime="20221230 01:53:20.350"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${message[0]}</arg>
+<arg>User deleted successfully</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20221230 02:13:27.817" endtime="20221230 02:13:27.818"/>
 </kw>
-<status status="PASS" starttime="20221230 01:53:20.301" endtime="20221230 01:53:20.351"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20221230 02:13:27.818" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20221230 02:13:27.818" endtime="20221230 02:13:27.818"/>
+</kw>
+<status status="PASS" starttime="20221230 02:13:27.746" endtime="20221230 02:13:27.818"/>
 </test>
-<status status="PASS" starttime="20221230 01:53:20.163" endtime="20221230 01:53:20.351"/>
+<status status="PASS" starttime="20221230 02:13:27.615" endtime="20221230 02:13:27.819"/>
+</suite>
+<status status="PASS" starttime="20221230 02:13:27.601" endtime="20221230 02:13:27.820"/>
 </suite>
 <statistics>
 <total>
@@ -174,9 +103,11 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="TC 002 Cannot Create User For Wrong Token And Secret Key">TC 002 Cannot Create User For Wrong Token And Secret Key</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Req 14">Req 14</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="TC 01 Delete User">Req 14.TC 01 Delete User</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20221230 02:13:27.772" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
 </errors>
 </robot>
