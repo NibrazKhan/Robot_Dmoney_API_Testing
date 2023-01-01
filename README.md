@@ -11,7 +11,7 @@ This is a complete DMoney API(Basic Financial Service API) Automation Project [A
 - Customer Balance After Send Money is validated.
 
 ## Test Cases
-**The test cases are written following standard test case format in this excel file:**
+The test cases are written following standard test case format in this excel file:
 [Dmoney_API_Test_Cases_For_Robot_Automation.xlsx](https://github.com/NibrazKhan/Robot_Dmoney_API_Testing/files/10329503/Dmoney_API_Test_Cases_For_Robot_Automation.xlsx) </br>
 You can also view it from:</br>
 https://docs.google.com/spreadsheets/d/1ER0_vXUtgN-2NsWOKNjiw7Zuw2BbuJuR/edit#gid=1165096410
