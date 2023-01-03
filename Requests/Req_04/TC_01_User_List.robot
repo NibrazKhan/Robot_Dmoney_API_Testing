@@ -18,7 +18,9 @@ TC1: Get User List
      ${response}=    get request    mysession   ${req_url}  headers=${header}
 
 #     Extracting value from json response
-     log to console    ${response.json()}
+     ${user_info}=      ${response.json()}
+     ${user_info_json}=     evaluate    json.dumps(${user_info},indent=4)
+     log to console    User List:\n${user_info_json}
      ${message}=    get value from json     ${response.json()}      message
      should be equal as strings    ${message[0]}    User list
      should be equal as strings    ${response.status_code}  200

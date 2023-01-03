@@ -17,7 +17,7 @@ ${secret_key}   ROADTOSDET
 TC1: Creation of User_1
      create session    mysession     ${base_url}
      ${random_number}=    Generate Random String  8  [NUMBERS]
-     ${randomName}=     generate random string    8-15
+     ${randomName}=     generate random string    9 [LETTERS]
      ${randomEmail}=     convert to string    TestEmail${randomName}@gmail.com
      ${password}=    convert to string    TestP@ssword${randomName}
      ${phoneNumber}=     convert to string    017${random_number}
