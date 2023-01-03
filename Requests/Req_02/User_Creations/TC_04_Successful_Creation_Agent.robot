@@ -18,13 +18,13 @@ ${secret_key}   ROADTOSDET
 TC1: Creation of Agent
      create session    mysession     ${base_url}
      ${random_number}=    Generate Random String  8  [NUMBERS]
-     ${randomName}=     generate random string    8-15
+     ${randomName}=     Generate Random String  8  [LETTERS]
      ${randomEmail}=     convert to string    TestEmail${randomName}@gmail.com
      ${password}=    convert to string    TestP@ssword${randomName}
      ${phoneNumber}=     convert to string    017${random_number}
      ${nid}=     convert to string    612345${random_number}
      ${role}=    convert to string    Agent
-     ${user_info}=  create dictionary    name=${randomName}     email=${randomEmail}    password=${password}    phone_number=${phoneNumber}   nid=${nid}    role=${role}
+     ${user_info}=  create dictionary    name=Agent ${randomName}     email=${randomEmail}    password=${password}    phone_number=${phoneNumber}   nid=${nid}    role=${role}
      #Converted dictionary to json
      ${user_info_json}=     evaluate    json.dumps(${user_info},indent=4)
      log to console   ${user_info_json}

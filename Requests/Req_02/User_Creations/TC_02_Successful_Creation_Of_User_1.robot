@@ -17,13 +17,13 @@ ${secret_key}   ROADTOSDET
 TC1: Creation of User_1
      create session    mysession     ${base_url}
      ${random_number}=    Generate Random String  8  [NUMBERS]
-     ${randomName}=     Generate Random String  10  [LETTERS]
+     ${randomName}=     Generate Random String  8  [LETTERS]
      ${randomEmail}=     convert to string    TestEmail${randomName}@gmail.com
      ${password}=    convert to string    TestP@ssword${randomName}
      ${phoneNumber}=     convert to string    017${random_number}
      ${nid}=     convert to string    612345${random_number}
      ${role}=    convert to string    Customer
-     ${user_info}=  create dictionary    name=${randomName}     email=${randomEmail}    password=${password}    phone_number=${phoneNumber}   nid=${nid}    role=${role}
+     ${user_info}=  create dictionary    name=Customer1 ${randomName}     email=${randomEmail}    password=${password}    phone_number=${phoneNumber}   nid=${nid}    role=${role}
      #Converted dictionary to json
      ${user_info_json}=     evaluate    json.dumps(${user_info},indent=4)
      log to console   ${user_info_json}
